@@ -7,7 +7,6 @@ var debounce = require('lodash.debounce');
 function App() {
   const [rows, setRows] = useState([])
 
-  const modifiedRows = useRef([])
   const [data, setData] = useState([])
 
 
@@ -17,7 +16,6 @@ function App() {
       let excelRows = JSON.parse(localStorage.getItem("ROWS"))
       if (excelRows.length !== 0) {
         setRows(excelRows)
-        modifiedRows.current = excelRows
     setData(excelRows)
 
       }
@@ -52,7 +50,6 @@ function App() {
     console.log(excelRows);
     localStorage.setItem("ROWS", JSON.stringify(excelRows))
     setRows(excelRows)
-    modifiedRows.current = excelRows
     setData(rows)
   }
 
@@ -97,8 +94,8 @@ function App() {
       <input className="upload-excel" type="file" id="fileUpload" onChange={Upload} />
       <input className="search" type="search" onChange={handleChange} />
       </div>
-      <p className='count'>Count:{modifiedRows.length}</p>
-      {data.length > 0 && <BasicTable rows={modifiedRows.current}></BasicTable>}
+      <p className='count'>Count:{data.length}</p>
+      {data.length > 0 && <BasicTable rows={data}></BasicTable>}
     </>
 
 

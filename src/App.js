@@ -1,7 +1,8 @@
 import './App.css';
 import * as XLSX from 'xlsx';
-import BasicTable from './table';
+// import BasicTable from './table';
 import { useEffect, useState } from 'react';
+import EnhancedTable from './table-checkbox';
 var debounce = require('lodash.debounce');
 
 function App() {
@@ -96,7 +97,9 @@ function App() {
       </div>
       <div className='data-table'>
 
-      {data.length > 0 && <BasicTable rows={data}></BasicTable>}
+      {/* {data.length > 0 && <BasicTable rows={data}></BasicTable>} */}
+      {data.length > 0 && <EnhancedTable rows={data}></EnhancedTable>}
+
       </div>
 
     </>

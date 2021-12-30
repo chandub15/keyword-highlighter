@@ -1,15 +1,13 @@
 import './App.css';
 import * as XLSX from 'xlsx';
 import BasicTable from './table';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 var debounce = require('lodash.debounce');
 
 function App() {
   const [rows, setRows] = useState([])
 
   const [data, setData] = useState([])
-
-
 
   useEffect(() => {
     if (localStorage.getItem("ROWS")) {
@@ -93,9 +91,14 @@ function App() {
     <div className="fix-top">
       <input className="upload-excel" type="file" id="fileUpload" onChange={Upload} />
       <input className="search" type="search" onChange={handleChange} />
-      </div>
       <p className='count'>Count:{data.length}</p>
+
+      </div>
+      <div className='data-table'>
+
       {data.length > 0 && <BasicTable rows={data}></BasicTable>}
+      </div>
+
     </>
 
 
